@@ -39,6 +39,8 @@ public class Pasur
     private final Hand poolHand;
     private final Player[] players;
 
+    private static Log logger = Log.getInstance();
+
     private PropertyChangeSupport propertyChangePublisher = new PropertyChangeSupport(this);
 
     public Pasur(int nPlayers) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException,

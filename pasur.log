@@ -1,0 +1,53 @@
+#Seed: 30006
+#Animate: true
+#Player0: pasur.RandomPlayer
+#Player1: pasur.RandomPlayer
+Game starts...
+Round 1 of the game starts...
+Total Running Scores: Player0 = 0 (0 Surs)        Player1 = 0 (0 Surs)
+Dealing out to players...
+Player0 hand: [J-S, 10-S, 4-D, 3-H]
+Player1 hand: [A-H, A-S, 4-S, 3-S]
+Dealing out to pool...
+Pool: [9-S, 8-C, 7-D, 6-S]
+Player0 plays J-S
+Player0 picks [J-S, 9-S, 8-C, 7-D, 6-S]
+Total Running Scores: Player0 = 0 (0 Surs)        Player1 = 0 (0 Surs)
+Player1 plays A-S
+Player1 picks []
+Total Running Scores: Player0 = 0 (0 Surs)        Player1 = 0 (0 Surs)
+Player0 plays 10-S
+Player0 picks [A-S, 10-S]
+Player0 scores a sur
+Total Running Scores: Player0 = 0 (1 Surs)        Player1 = 0 (0 Surs)
+Player1 plays 3-S
+Player1 picks []
+Total Running Scores: Player0 = 0 (1 Surs)        Player1 = 0 (0 Surs)
+Player0 plays 4-D
+Player0 picks []
+Total Running Scores: Player0 = 0 (1 Surs)        Player1 = 0 (0 Surs)
+Player1 plays A-H
+Player1 picks []
+Total Running Scores: Player0 = 0 (1 Surs)        Player1 = 0 (0 Surs)
+Player0 plays 3-H
+Player0 picks [A-H, 4-D, 3-H, 3-S]
+Player0 scores a sur
+Total Running Scores: Player0 = 0 (2 Surs)        Player1 = 0 (0 Surs)
+Player1 plays 4-S
+Player1 picks []
+Total Running Scores: Player0 = 0 (2 Surs)        Player1 = 0 (0 Surs)
+Dealing out to players...
+Player0 hand: [8-H, 7-S, 5-S, 4-H]
+Player1 hand: [K-D, Q-S, J-C, 6-C]
+Player0 plays 5-S
+Player0 picks []
+Total Running Scores: Player0 = 0 (2 Surs)        Player1 = 0 (0 Surs)
+Player1 plays J-C
+Player1 picks [J-C, 5-S, 4-S]
+Total Running Scores: Player0 = 0 (2 Surs)        Player1 = 0 (0 Surs)
+Player0 plays 8-H
+Player0 picks []
+Total Running Scores: Player0 = 0 (2 Surs)        Player1 = 0 (0 Surs)
+Player1 plays K-D
+Player1 picks []
+Total Running Scores: Player0 = 0 (2 Surs)        Player1 = 0 (0 Surs)

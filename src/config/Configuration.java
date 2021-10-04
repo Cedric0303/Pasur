@@ -3,6 +3,7 @@ package config;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
+import pasur.Log;
 
 public class Configuration
 {
@@ -17,6 +18,8 @@ public class Configuration
     private boolean animate;
     private String player0class;
     private String player1class;
+
+    private static Log logger = Log.getInstance();
 
     public static Configuration getInstance()
     {
