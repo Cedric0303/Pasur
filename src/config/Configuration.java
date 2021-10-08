@@ -5,8 +5,8 @@ import java.io.IOException;
 import java.util.Properties;
 import pasur.Logger;
 
-public class Configuration
-{
+public class Configuration {
+
     private static final String SEED_KEY = "Seed";
     private static final String ANIMATE_KEY = "Animate";
     private static final String PLAYER0_KEY = "Player0";
@@ -21,10 +21,8 @@ public class Configuration
 
     private static Logger logger = Logger.getInstance();
 
-    public static Configuration getInstance()
-    {
-        if(configuration == null)
-        {
+    public static Configuration getInstance() {
+        if (configuration == null) {
             configuration = new Configuration();
 
             try {
@@ -37,8 +35,7 @@ public class Configuration
         return configuration;
     }
 
-    private void setUp() throws IOException 
-    {
+    private void setUp() throws IOException {
         // Default properties
 
         // Read properties
@@ -70,23 +67,19 @@ public class Configuration
         System.out.println("#Player1: " + player1class);
     }
 
-    public int getSeed()
-    {
+    public int getSeed() {
         return seed;
     }
 
-    public boolean isAnimate()
-    {
+    public boolean isAnimate() {
         return animate;
     }
 
-    public String getPlayer0class()
-    {
+    public String getPlayer0class() {
         return player0class;
     }
 
-    public String getPlayer1class()
-    {
+    public String getPlayer1class() {
         return player1class;
     }
 }
