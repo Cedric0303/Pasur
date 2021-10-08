@@ -3,7 +3,7 @@ package config;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
-import pasur.Log;
+import pasur.Logger;
 
 public class Configuration
 {
@@ -19,7 +19,7 @@ public class Configuration
     private String player0class;
     private String player1class;
 
-    private static Log logger = Log.getInstance();
+    private static Logger logger = Logger.getInstance();
 
     public static Configuration getInstance()
     {

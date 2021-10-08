@@ -4,13 +4,13 @@ import java.io.File;
 import java.io.PrintStream;
 import java.io.IOException;
 
-public class Log {
-    private static Log instance = null;
+public class Logger {
+    private static Logger instance = null;
     private File file;
     private String name;
     public PrintStream ps;
 
-    private Log() {
+    private Logger() {
         try {
             this.name = "pasur.log";
             this.file = new File(this.name);
@@ -22,9 +22,9 @@ public class Log {
             e.printStackTrace();
         } 
     }
-    public static Log getInstance() {
+    public static Logger getInstance() {
         if (instance == null) {
-            instance = new Log();
+            instance = new Logger();
         }
         return instance;
     }

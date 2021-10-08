@@ -39,7 +39,7 @@ public class Pasur
     private final Hand poolHand;
     private final Player[] players;
 
-    private static Log logger = Log.getInstance();
+    private static Logger logger = Logger.getInstance();
 
     private PropertyChangeSupport propertyChangePublisher = new PropertyChangeSupport(this);
 
