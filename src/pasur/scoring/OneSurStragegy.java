@@ -2,12 +2,13 @@ package pasur.scoring;
 
 import ch.aplu.jcardgame.Hand;
 
-public class OneSurStragegy implements ScoringStrategy {
-
+public class OneSurStragegy implements IScoringStrategy {
     @Override
     public int getScore(Hand surs, Hand pickedCards) {
         int numSurs = surs.getNumberOfCards();
         int totalScore = numSurs * 5;
         return totalScore;
     }
+
+
 }

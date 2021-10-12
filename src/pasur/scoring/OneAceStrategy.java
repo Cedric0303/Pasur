@@ -3,7 +3,9 @@ package pasur.scoring;
 import ch.aplu.jcardgame.*;
 import pasur.Rank;
 
-public class OneAceStrategy implements ScoringStrategy {
+
+public class OneAceStrategy implements IScoringStrategy {
+
 
     @Override
     public int getScore(Hand surs, Hand pickedCards) {

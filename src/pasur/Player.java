@@ -6,7 +6,6 @@ package pasur;
  */
 
 import ch.aplu.jcardgame.*;
-import pasur.scoring.ScoringStrategy;
 import pasur.scoring.ScoringStrategyFactory;
 
 import java.util.*;
