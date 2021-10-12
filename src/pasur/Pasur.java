@@ -352,6 +352,7 @@ public class Pasur {
     private void reset() {
         for (int i = 0; i < nPlayers; i++) {
             Player player = players[i];
+            player.setTotalScore();
             player.reset();
         }
 
