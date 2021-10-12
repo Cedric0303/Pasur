@@ -6,6 +6,7 @@ package pasur;
  */
 
 import ch.aplu.jcardgame.*;
+import pasur.scoring.ScoringStrategy;
 import pasur.scoring.ScoringStrategyFactory;
 
 import java.util.*;
@@ -35,7 +36,7 @@ public abstract class Player {
         Set<Card> cardsToPick = null;
         if (playedCard != null) {
             System.out.println(
-                    toString() + " plays " + Pasur.toString(playedCard)
+                toString() + " plays " + Pasur.toString(playedCard)
             );
 
             cardsToPick = pickCards(pool, playedCard);
@@ -52,15 +53,15 @@ public abstract class Player {
             for (int i = 0, len = poolCards.size(); i < len; i++) {
                 Card card = poolCards.get(i);
                 if (
-                        card.getRank() != Rank.KING && card.getRank() != Rank.QUEEN
+                    card.getRank() != Rank.KING && card.getRank() != Rank.QUEEN
                 ) {
                     // a jack picks any card except kings and queens
                     cardsToPick.add(card);
                 }
             }
         } else if (
-                playedCard.getRank() == Rank.KING ||
-                        playedCard.getRank() == Rank.QUEEN
+            playedCard.getRank() == Rank.KING ||
+            playedCard.getRank() == Rank.QUEEN
         ) {
             Card candidateCardToPick = null;
             for (int i = 0, len = poolCards.size(); i < len; i++) {
@@ -83,13 +84,13 @@ public abstract class Player {
             int targetValue = TARGET_VALUE - playedCard.getValue();
             if (!poolCards.isEmpty()) {
                 findSetsOfCardsSummingToTarget(
-                        poolCards,
-                        targetValue,
-                        candidateSetsOfCardsToPick
+                    poolCards,
+                    targetValue,
+                    candidateSetsOfCardsToPick
                 );
                 if (!candidateSetsOfCardsToPick.isEmpty()) {
                     Set<Card> bestSet = chooseBestCandidateSetToPick(
-                            candidateSetsOfCardsToPick
+                        candidateSetsOfCardsToPick
                     );
                     for (Card card : bestSet) {
                         cardsToPick.add(card);
@@ -102,7 +103,7 @@ public abstract class Player {
     }
 
     protected Set<Card> chooseBestCandidateSetToPick(
-            List<Set<Card>> candidateSetsOfCardsToPick
+        List<Set<Card>> candidateSetsOfCardsToPick
     ) {
         double valueGivenTo10ofDiamond = 3;
         double valueGivenTo2ofClubs = 2;
@@ -115,12 +116,12 @@ public abstract class Player {
             double setValue = 0;
             for (Card card : set) {
                 if (
-                        card.getRank() == Rank.TEN &&
-                                card.getSuit() == Suit.DIAMONDS
+                    card.getRank() == Rank.TEN &&
+                    card.getSuit() == Suit.DIAMONDS
                 ) {
                     setValue += valueGivenTo10ofDiamond;
                 } else if (
-                        card.getRank() == Rank.TWO && card.getSuit() == Suit.CLUBS
+                    card.getRank() == Rank.TWO && card.getSuit() == Suit.CLUBS
                 ) {
                     setValue += valueGivenTo2ofClubs;
                 } else if (card.getRank() == Rank.ACE) {
@@ -144,23 +145,23 @@ public abstract class Player {
     }
 
     private void findSetsOfCardsSummingToTarget(
-            List<Card> cards,
-            int targetValue,
-            List<Set<Card>> setsOfCards
+        List<Card> cards,
+        int targetValue,
+        List<Set<Card>> setsOfCards
     ) {
         _findSetsOfCardsSummingToTarget(
-                cards,
-                setsOfCards,
-                targetValue,
-                new ArrayList<>()
+            cards,
+            setsOfCards,
+            targetValue,
+            new ArrayList<>()
         );
     }
 
     private void _findSetsOfCardsSummingToTarget(
-            List<Card> cards,
-            List<Set<Card>> setsOfCards,
-            int targetValue,
-            List<Card> partial
+        List<Card> cards,
+        List<Set<Card>> setsOfCards,
+        int targetValue,
+        List<Card> partial
     ) {
         int sum = 0;
         for (int i = 0, len = partial.size(); i < len; i++) {
@@ -188,10 +189,10 @@ public abstract class Player {
             partialCards.add(card);
 
             _findSetsOfCardsSummingToTarget(
-                    remainingCards,
-                    setsOfCards,
-                    targetValue,
-                    partialCards
+                remainingCards,
+                setsOfCards,
+                targetValue,
+                partialCards
             );
         }
     }
