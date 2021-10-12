@@ -25,7 +25,7 @@ public class Pasur {
 
     // used for the simulation
     private static final Random random = new Random(
-        Configuration.getInstance().getSeed()
+            Configuration.getInstance().getSeed()
     );
 
     private static final int SCORE_TO_WIN = 62;
@@ -43,11 +43,11 @@ public class Pasur {
     private static Logger logger = Logger.getInstance();
 
     private PropertyChangeSupport propertyChangePublisher = new PropertyChangeSupport(
-        this
+            this
     );
 
     public Pasur(int nPlayers)
-        throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+            throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         // Instantiate players
         this.nPlayers = nPlayers;
 
@@ -59,12 +59,12 @@ public class Pasur {
         players[1] = (Player) clazz.getConstructor(int.class).newInstance(1);
 
         deck =
-            new Deck(
-                Suit.values(),
-                Rank.values(),
-                "cover",
-                suit -> Rank.getCardValuesArray()
-            );
+                new Deck(
+                        Suit.values(),
+                        Rank.values(),
+                        "cover",
+                        suit -> Rank.getCardValuesArray()
+                );
 
         poolHand = new Hand(deck);
 
@@ -112,7 +112,7 @@ public class Pasur {
         while (winner == null) {
             roundOfGame++;
             System.out.println(
-                "Round " + roundOfGame + " of the game starts..."
+                    "Round " + roundOfGame + " of the game starts..."
             );
 
             boolean isFirstRound = true;
@@ -142,9 +142,9 @@ public class Pasur {
                     }
 
                     for (
-                        int j = 0, k = currentStartingPlayerPos;
-                        j < nPlayers;
-                        j++
+                            int j = 0, k = currentStartingPlayerPos;
+                            j < nPlayers;
+                            j++
                     ) {
                         if (paused) {
                             pauseGame();
@@ -152,7 +152,7 @@ public class Pasur {
 
                         Player player = players[k];
                         Map.Entry<Card, Set<Card>> playedCard_cardsToPick = player.playCard(
-                            poolHand
+                                poolHand
                         );
                         Card playedCard = playedCard_cardsToPick.getKey();
                         Set<Card> cardsToPick = playedCard_cardsToPick.getValue();
@@ -181,9 +181,9 @@ public class Pasur {
                             }
 
                             System.out.println(
-                                player.toString() +
-                                " picks " +
-                                toString(cardList)
+                                    player.toString() +
+                                            " picks " +
+                                            toString(cardList)
                             );
 
                             if (isAsur(playedCard, isLastRound)) {
@@ -191,14 +191,14 @@ public class Pasur {
                                 // otherwise it will be added as a sur for this player
 
                                 System.out.println(
-                                    player.toString() + " scores a sur"
+                                        player.toString() + " scores a sur"
                                 );
 
                                 int nOtherPlayersWithSure = 0;
                                 for (int r = 0; r < nPlayers; r++) {
                                     if (
-                                        player != players[r] &&
-                                        !players[r].getSurs().isEmpty()
+                                            player != players[r] &&
+                                                    !players[r].getSurs().isEmpty()
                                     ) {
                                         nOtherPlayersWithSure++;
                                     }
@@ -210,19 +210,19 @@ public class Pasur {
                                         Player otherPlayer = players[r];
                                         if (player != otherPlayer) {
                                             Card surCard = otherPlayer
-                                                .getSurs()
-                                                .get(
-                                                    otherPlayer
-                                                        .getSurs()
-                                                        .getNumberOfCards() -
-                                                    1
-                                                );
+                                                    .getSurs()
+                                                    .get(
+                                                            otherPlayer
+                                                                    .getSurs()
+                                                                    .getNumberOfCards() -
+                                                                    1
+                                                    );
                                             cardList.clear();
                                             cardList.add(surCard);
                                             transfer(
-                                                cardList,
-                                                otherPlayer.getPickedCards(),
-                                                false
+                                                    cardList,
+                                                    otherPlayer.getPickedCards(),
+                                                    false
                                             );
                                             surCard.setVerso(true);
                                         }
@@ -237,9 +237,9 @@ public class Pasur {
                             }
                         } else {
                             System.out.println(
-                                player.toString() +
-                                " picks " +
-                                toString(cardsToPick)
+                                    player.toString() +
+                                            " picks " +
+                                            toString(cardsToPick)
                             );
                             // the played card of the player can't pick any card, so we have to leave it at the pool
                         }
@@ -256,10 +256,10 @@ public class Pasur {
 
                     List<Card> poolCards = poolHand.getCardList();
                     if (!poolCards.isEmpty()) System.out.println(
-                        lastPlayerWhoPickedAcard +
-                        " picks " +
-                        toString(poolCards) +
-                        " at the end of this round of game"
+                            lastPlayerWhoPickedAcard +
+                                    " picks " +
+                                    toString(poolCards) +
+                                    " at the end of this round of game"
                     );
 
                     cardList.clear();
@@ -273,9 +273,9 @@ public class Pasur {
                         card.setVerso(true);
                     }
                     transfer(
-                        cardList,
-                        lastPlayerWhoPickedAcard.getPickedCards(),
-                        false
+                            cardList,
+                            lastPlayerWhoPickedAcard.getPickedCards(),
+                            false
                     );
                 }
             }
@@ -284,7 +284,7 @@ public class Pasur {
 
             currentStartingPlayerPos++;
             if (currentStartingPlayerPos == nPlayers) currentStartingPlayerPos =
-                0;
+                    0;
 
             System.out.println("Round " + roundOfGame + " of the game ends...");
 
@@ -293,7 +293,7 @@ public class Pasur {
                 Player player = players[i];
                 if (player.getScore() >= SCORE_TO_WIN) {
                     if (playersWithEnoughScore == null) playersWithEnoughScore =
-                        new ArrayList<>();
+                            new ArrayList<>();
 
                     playersWithEnoughScore.add(player);
                 }
@@ -305,11 +305,11 @@ public class Pasur {
                 if (playersWithEnoughScore.size() > 1) {
                     // there are more than one player with the score above the threshold
                     playersWithEnoughScore.sort((o1, o2) ->
-                        -Integer.compare(o1.getScore(), o2.getScore())
+                            -Integer.compare(o1.getScore(), o2.getScore())
                     );
                     if (
-                        playersWithEnoughScore.get(0).getScore() ==
-                        playersWithEnoughScore.get(1).getScore()
+                            playersWithEnoughScore.get(0).getScore() ==
+                                    playersWithEnoughScore.get(1).getScore()
                     ) {
                         // the score of the top two players are the same, so we have to play another round
                         continue;
@@ -326,9 +326,9 @@ public class Pasur {
         String winningText = winner.toString() + " is the winner!";
 
         propertyChangePublisher.firePropertyChange(
-            ON_GAME_END,
-            null,
-            winningText
+                ON_GAME_END,
+                null,
+                winningText
         );
 
         System.out.println(winningText);
@@ -352,6 +352,7 @@ public class Pasur {
     private void reset() {
         for (int i = 0; i < nPlayers; i++) {
             Player player = players[i];
+            player.setTotalScore();
             player.reset();
         }
 
@@ -372,18 +373,18 @@ public class Pasur {
 
             Player player = players[i];
             scoreString +=
-                player.toString() +
-                " = " +
-                player.getScore() +
-                " (" +
-                player.getSurs().getNumberOfCards() +
-                " Surs)";
+                    player.toString() +
+                            " = " +
+                            player.getScore() +
+                            " (" +
+                            player.getSurs().getNumberOfCards() +
+                            " Surs)";
         }
 
         propertyChangePublisher.firePropertyChange(
-            ON_UPDATE_SCORE,
-            null,
-            scoreString
+                ON_UPDATE_SCORE,
+                null,
+                scoreString
         );
         //        scoreLabel.setText(scoreString);
         System.out.println("Total Running Scores: " + scoreString);
@@ -416,9 +417,9 @@ public class Pasur {
             if (k == nPlayers) k = 0;
 
             System.out.println(
-                player.toString() +
-                " hand: " +
-                toString(player.getHand().getCardList())
+                    player.toString() +
+                            " hand: " +
+                            toString(player.getHand().getCardList())
             );
         }
     }
@@ -456,9 +457,9 @@ public class Pasur {
         boolean doDraw = !sortAfterTransfer;
 
         propertyChangePublisher.firePropertyChange(
-            ON_CARD_TRANSFER,
-            null,
-            new Object[] { cards, h, doDraw }
+                ON_CARD_TRANSFER,
+                null,
+                new Object[] { cards, h, doDraw }
         );
 
         for (int i = 0; i < cards.size(); i++) {
@@ -480,13 +481,13 @@ public class Pasur {
         h.sort(Hand.SortType.RANKPRIORITY, false);
 
         return (
-            "[" +
-            h
-                .getCardList()
-                .stream()
-                .map(Pasur::toString)
-                .collect(Collectors.joining(", ")) +
-            "]"
+                "[" +
+                        h
+                                .getCardList()
+                                .stream()
+                                .map(Pasur::toString)
+                                .collect(Collectors.joining(", ")) +
+                        "]"
         );
     }
 
@@ -519,26 +520,26 @@ public class Pasur {
     }
 
     public void addPropertyChangeListener(
-        PropertyChangeListener propertyChangeListener
+            PropertyChangeListener propertyChangeListener
     ) {
         propertyChangePublisher.addPropertyChangeListener(
-            propertyChangeListener
+                propertyChangeListener
         );
     }
 
     public void removePropertyChangeListener(
-        PropertyChangeListener propertyChangeListener
+            PropertyChangeListener propertyChangeListener
     ) {
         propertyChangePublisher.removePropertyChangeListener(
-            propertyChangeListener
+                propertyChangeListener
         );
     }
 
     public static String toString(Card c) {
         return (
-            ((Rank) c.getRank()).canonical() +
-            "-" +
-            ((Suit) c.getSuit()).canonical()
+                ((Rank) c.getRank()).canonical() +
+                        "-" +
+                        ((Suit) c.getSuit()).canonical()
         );
     }
 
