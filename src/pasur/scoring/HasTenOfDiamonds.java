@@ -1,8 +1,11 @@
 package pasur.scoring;
 
+import ch.aplu.jcardgame.Card;
 import ch.aplu.jcardgame.Hand;
 import pasur.Rank;
 import pasur.Suit;
+
+import java.util.ArrayList;
 
 public class HasTenOfDiamonds implements IScoringStrategy {
     @Override
@@ -25,9 +28,12 @@ public class HasTenOfDiamonds implements IScoringStrategy {
 //        else {
 //            return 0;
 //        }
+        ArrayList<Card> allPickedCards;
 
-        for (int i=0; i< pickedCards.getCardsWithSuit(Suit.DIAMONDS).size(); i++) {
-            if (pickedCards.getCardsWithSuit(Suit.DIAMONDS).get(i).getRank() == Rank.TEN) {
+        allPickedCards = pickedCards.getCardsWithSuit(Suit.DIAMONDS);
+        allPickedCards.addAll(surs.getCardsWithSuit(Suit.DIAMONDS));
+        for (int i=0; i< allPickedCards.size(); i++) {
+            if (allPickedCards.get(i).getRank() == Rank.TEN) {
                 return 3;
             }
         }
