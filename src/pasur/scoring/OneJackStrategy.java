@@ -3,7 +3,7 @@ package pasur.scoring;
 import ch.aplu.jcardgame.Hand;
 import pasur.Rank;
 
-public class OneJackStrategy implements ScoringStrategy {
+public class OneJackStrategy implements IScoringStrategy {
 
     @Override
     public int getScore(Hand surs, Hand pickedCards) {
@@ -12,4 +12,6 @@ public class OneJackStrategy implements ScoringStrategy {
         int TotalScore = scoreSurs + scorePC;
         return TotalScore;
     }
+
+
 }
