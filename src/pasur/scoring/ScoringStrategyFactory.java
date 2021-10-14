@@ -10,6 +10,9 @@ public class ScoringStrategyFactory {
         compositeScoringStrategy.add(new OneAceStrategy());
         compositeScoringStrategy.add(new OneJackStrategy());
         compositeScoringStrategy.add(new OneSurStragegy());
+        compositeScoringStrategy.add(new HasSevenMoreClubs());
+        compositeScoringStrategy.add(new HasTenOfDiamonds());
+        compositeScoringStrategy.add(new HasTwoOfClubs());
         this.strategies = compositeScoringStrategy;
     }
 
