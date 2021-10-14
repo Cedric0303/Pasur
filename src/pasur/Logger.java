@@ -16,7 +16,6 @@ public class Logger {
             this.name = "pasur.log";
             this.file = new File(this.name);
             this.ps = new PrintStream(this.file);
-            System.setOut(ps);
         } catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
@@ -28,5 +27,9 @@ public class Logger {
             instance = new Logger();
         }
         return instance;
+    }
+
+    public void redirectOutput() {
+        System.setOut(ps);
     }
 }
