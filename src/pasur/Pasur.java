@@ -82,6 +82,7 @@ public class Pasur {
             Hand surCards = new Hand(deck);
             player.setSurs(surCards);
         }
+        logger.redirectOutput();
     }
 
     public synchronized void pauseGame() {

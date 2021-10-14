@@ -24,8 +24,8 @@ public class Configuration {
     public static Configuration getInstance() {
         if (configuration == null) {
             configuration = new Configuration();
-
             try {
+                logger.redirectOutput();
                 configuration.setUp();
             } catch (IOException e) {
                 e.printStackTrace();

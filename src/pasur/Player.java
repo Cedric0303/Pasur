@@ -6,10 +6,8 @@ package pasur;
  */
 
 import ch.aplu.jcardgame.*;
-import pasur.scoring.ScoringStrategy;
-import pasur.scoring.ScoringStrategyFactory;
-
 import java.util.*;
+import pasur.scoring.*;
 
 public abstract class Player {
 
@@ -21,6 +19,7 @@ public abstract class Player {
     protected Hand surs;
 
     protected int totalScore = 0;
+    private ScoringStrategyFactory scoringFactory = ScoringStrategyFactory.getInstance();
 
     protected Player(int id) {
         this.id = id;
@@ -232,18 +231,18 @@ public abstract class Player {
     }
 
     public int getScore() {
-        ScoringStrategyFactory strategies = new ScoringStrategyFactory();
-        int score = strategies.getCompositeScoringStrategy().getScore(this.surs, this.pickedCards);
+        int score = scoringFactory
+            .getStrategies()
+            .getScore(this.surs, this.pickedCards);
         return this.totalScore + score;
     }
 
     abstract Card selectToPlay();
 
-
-
     public void setTotalScore() {
-        ScoringStrategyFactory strategies = new ScoringStrategyFactory();
-        int score = strategies.getCompositeScoringStrategy().getScore(this.surs, this.pickedCards);
+        int score = scoringFactory
+            .getStrategies()
+            .getScore(this.surs, this.pickedCards);
         this.totalScore += score;
     }
 }
