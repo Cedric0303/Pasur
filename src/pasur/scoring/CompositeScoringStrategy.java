@@ -1,12 +1,13 @@
 package pasur.scoring;
 
 import ch.aplu.jcardgame.*;
+import java.util.ArrayList;
 
-import  java.util.ArrayList;
-public abstract class CompositeScoringStrategy implements IScoringStrategy {
-    protected ArrayList<IScoringStrategy> scoringStrategies = new ArrayList<IScoringStrategy>();
+public abstract class CompositeScoringStrategy implements ScoringStrategy {
 
-    public void add(IScoringStrategy strategy){
+    protected ArrayList<ScoringStrategy> scoringStrategies = new ArrayList<ScoringStrategy>();
+
+    public void add(ScoringStrategy strategy) {
         scoringStrategies.add(strategy);
     }
 
